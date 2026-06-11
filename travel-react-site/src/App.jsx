@@ -4,6 +4,57 @@ import { itineraryData } from "./itineraryData";
 
 const typeIcon = { transport: Bus, hotel: Hotel, sights: MapPinned, food: Utensils, ferry: Ship, tip: Info };
 
+const overviewRows = [
+  {
+    date: "8/12\n三",
+    city: "札幌",
+    plan: "CI130 13:35 抵達新千歲；JR 快速 Airport 到札幌；入住 Hotel ONE'S RESIDENCE",
+    address: "Hokkaido, Sapporo, Chuo-Ku Minami8Jo Nishi2Chome5-67"
+  },
+  {
+    date: "8/13\n四",
+    city: "小樽",
+    plan: "JR 札幌 -> 小樽；小樽運河、堺町通、音樂盒堂；JR 南小樽 -> 札幌",
+    address: "Hotel ONE'S RESIDENCE"
+  },
+  {
+    date: "8/14\n五",
+    city: "札幌",
+    plan: "二條市場、大通公園、時計台、紅磚廳舍、北海道大學；札幌住宿第三晚",
+    address: "Hotel ONE'S RESIDENCE"
+  },
+  {
+    date: "8/15\n六",
+    city: "札幌",
+    plan: "白色戀人公園、円山、北海道神宮、藻岩山夜景；札幌住宿第四晚",
+    address: "Hotel ONE'S RESIDENCE"
+  },
+  {
+    date: "8/16\n日",
+    city: "札幌",
+    plan: "莫埃來沼公園、羊之丘展望台、大通夏祭/北海盆踊；札幌住宿第五晚",
+    address: "Hotel ONE'S RESIDENCE"
+  },
+  {
+    date: "8/17\n一",
+    city: "旭川",
+    plan: "JR 特急札幌 -> 旭川；上野農場、旭川拉麵村；JR 特急回札幌",
+    address: "Hotel ONE'S RESIDENCE"
+  },
+  {
+    date: "8/18\n二",
+    city: "登別",
+    plan: "JR 特急札幌 -> 登別；巴士到登別溫泉；地獄谷、伊達時代村；回札幌",
+    address: "Hotel ONE'S RESIDENCE"
+  },
+  {
+    date: "8/19\n三",
+    city: "札幌",
+    plan: "退房；JR 快速 Airport 到新千歲機場；CI131 15:05 起飛",
+    address: "新千歲機場"
+  }
+];
+
 function Html({ html }) {
   return <div className="rich-text" dangerouslySetInnerHTML={{ __html: html }} />;
 }
@@ -89,8 +140,34 @@ function Overview({ lang }) {
   const country = itineraryData.countryInfo;
   return (
     <main className="overview-grid">
-      <section className="overview-panel intro-panel">
-        <div className="panel-label"><Info size={16} />{lang === "de" ? "Reiseüberblick" : "行程總覽"}</div>
+      <section className="overview-panel wide-panel overview-table-panel">
+        <div className="panel-label"><CalendarDays size={28} />{lang === "de" ? "Unterkunft und Verkehr" : "住宿與交通"}</div>
+        <div className="table-wrap overview-table-wrap">
+          <table className="overview-table">
+            <thead>
+              <tr>
+                <th>{lang === "de" ? "Datum" : "日期"}</th>
+                <th>{lang === "de" ? "Stadt" : "城市"}</th>
+                <th>{lang === "de" ? "Unterkunft / Verkehr" : "已訂住宿 / 交通"}</th>
+                <th>{lang === "de" ? "Adresse / Ziel" : "地址 / 到達點"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {overviewRows.map((row) => (
+                <tr key={`${row.date}-${row.city}`}>
+                  <td>{row.date.split("\n").map((line) => <span key={line}>{line}</span>)}</td>
+                  <td>{row.city}</td>
+                  <td>{row.plan}</td>
+                  <td>{row.address}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="overview-panel wide-panel intro-panel">
+        <div className="panel-label"><Info size={20} />{lang === "de" ? "Reiseüberblick" : "行程總覽"}</div>
         {itineraryData.intro.map((item, index) => <Html key={index} html={text(item, lang)} />)}
       </section>
       {country && (

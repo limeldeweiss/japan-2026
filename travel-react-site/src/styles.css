@@ -247,6 +247,10 @@ button {
   padding: 28px;
 }
 
+.overview-table-panel {
+  padding: 36px 34px;
+}
+
 .day-detail {
   min-height: calc(100vh - 86px);
   padding: 34px;
@@ -265,6 +269,12 @@ button {
   font-size: 1.1rem;
   letter-spacing: 0;
   margin-bottom: 14px;
+}
+
+.overview-table-panel .panel-label {
+  gap: 12px;
+  font-size: 2rem;
+  margin-bottom: 24px;
 }
 
 .day-detail-head {
@@ -484,6 +494,10 @@ button {
   border-radius: 8px;
 }
 
+.overview-table-wrap {
+  margin: 0;
+}
+
 table {
   width: 100%;
   min-width: 680px;
@@ -503,6 +517,42 @@ td {
 th {
   background: #e8f0ed;
   color: #103f5b;
+}
+
+.overview-table {
+  min-width: 1040px;
+}
+
+.overview-table th,
+.overview-table td {
+  padding: 20px 18px;
+  color: #16202b;
+  font-size: 1.45rem;
+  line-height: 1.45;
+}
+
+.overview-table th {
+  color: #103f5b;
+  font-size: 1.65rem;
+  font-weight: 950;
+}
+
+.overview-table td:first-child {
+  width: 120px;
+  white-space: pre-line;
+}
+
+.overview-table td:first-child span {
+  display: block;
+}
+
+.overview-table td:nth-child(2) {
+  width: 170px;
+  font-weight: 750;
+}
+
+.overview-table td:nth-child(4) {
+  width: 310px;
 }
 
 .country-table {
@@ -629,6 +679,24 @@ th {
   .overview-panel,
   .day-detail {
     padding: 18px;
+  }
+
+  .overview-table-panel .panel-label {
+    font-size: 1.45rem;
+  }
+
+  .overview-table {
+    min-width: 880px;
+  }
+
+  .overview-table th,
+  .overview-table td {
+    padding: 14px 12px;
+    font-size: 1rem;
+  }
+
+  .overview-table th {
+    font-size: 1.08rem;
   }
 
   .day-detail-head {
