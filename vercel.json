@@ -1,0 +1,5 @@
+{
+  "installCommand": "cd travel-react-site && npm install",
+  "buildCommand": "cd travel-react-site && npm run build",
+  "outputDirectory": "travel-react-site/dist"
+}
