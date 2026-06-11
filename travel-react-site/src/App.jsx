@@ -70,8 +70,7 @@ function RouteBlock({ block, lang }) {
 
   return (
     <div className="route-block">
-      <section className="route-step route-step-lead">
-        <div className="step-index">1</div>
+      <section className="route-summary">
         <div className="step-body">
           <button className="step-heading" type="button" aria-expanded="true">
             <span className="step-icon"><Bus size={22} /></span>
@@ -81,7 +80,7 @@ function RouteBlock({ block, lang }) {
           <Html html={introHtml} />
         </div>
       </section>
-      {steps.map((step, index) => <RouteStep key={`${step.title}-${index}`} step={step} index={index + 1} />)}
+      {steps.map((step, index) => <RouteStep key={`${step.title}-${index}`} step={step} index={index} />)}
     </div>
   );
 }

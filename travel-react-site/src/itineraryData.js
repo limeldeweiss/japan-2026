@@ -93,7 +93,7 @@ export const itineraryData = {
     {
       "date": "8/12",
       "weekday": "三",
-      "title": "抵達新千歲機場、札幌初見",
+      "title": "札幌",
       "blocks": [
         {
           "title": "建議路線",
@@ -103,14 +103,14 @@ export const itineraryData = {
           "titleDe": "EmpfehlungRoute"
         }
       ],
-      "city": "新千歲機場、札幌",
-      "cityDe": "New Chitose, Sapporo",
-      "titleDe": "AnkunftJahreFlughafen /"
+      "city": "札幌",
+      "cityDe": "Sapporo",
+      "titleDe": "Sapporo"
     },
     {
       "date": "8/13",
       "weekday": "四",
-      "title": "小樽一日遊",
+      "title": "小樽",
       "blocks": [
         {
           "title": "建議路線",
@@ -122,12 +122,12 @@ export const itineraryData = {
       ],
       "city": "小樽",
       "cityDe": "Otaru",
-      "titleDe": "Tag"
+      "titleDe": "Otaru"
     },
     {
       "date": "8/14",
       "weekday": "五",
-      "title": "札幌市中心歷史與市場日",
+      "title": "札幌",
       "blocks": [
         {
           "title": "建議路線",
@@ -137,14 +137,14 @@ export const itineraryData = {
           "titleDe": "EmpfehlungRoute"
         }
       ],
-      "city": "札幌市中心",
-      "cityDe": "Central Sapporo",
-      "titleDe": "Tag"
+      "city": "札幌",
+      "cityDe": "Sapporo",
+      "titleDe": "Sapporo"
     },
     {
       "date": "8/15",
       "weekday": "六",
-      "title": "白色戀人公園、円山、北海道神宮、藻岩山夜景",
+      "title": "札幌",
       "blocks": [
         {
           "title": "建議路線",
@@ -154,14 +154,14 @@ export const itineraryData = {
           "titleDe": "EmpfehlungRoute"
         }
       ],
-      "city": "札幌西側、円山",
-      "cityDe": "West Sapporo, Maruyama",
-      "titleDe": "/ / /"
+      "city": "札幌",
+      "cityDe": "Sapporo",
+      "titleDe": "Sapporo"
     },
     {
       "date": "8/16",
       "weekday": "日",
-      "title": "莫埃來沼公園、羊之丘展望台、札幌夏祭收尾",
+      "title": "札幌",
       "blocks": [
         {
           "title": "建議路線",
@@ -171,14 +171,14 @@ export const itineraryData = {
           "titleDe": "EmpfehlungRoute"
         }
       ],
-      "city": "札幌東/南側",
-      "cityDe": "East/South Sapporo",
-      "titleDe": "/ /"
+      "city": "札幌",
+      "cityDe": "Sapporo",
+      "titleDe": "Sapporo"
     },
     {
       "date": "8/17",
       "weekday": "一",
-      "title": "旭川一日遊",
+      "title": "旭川",
       "blocks": [
         {
           "title": "建議路線",
@@ -190,12 +190,12 @@ export const itineraryData = {
       ],
       "city": "旭川",
       "cityDe": "Asahikawa",
-      "titleDe": "Tag"
+      "titleDe": "Asahikawa"
     },
     {
       "date": "8/18",
       "weekday": "二",
-      "title": "登別溫泉與地獄谷一日遊",
+      "title": "登別",
       "blocks": [
         {
           "title": "建議路線",
@@ -207,12 +207,12 @@ export const itineraryData = {
       ],
       "city": "登別",
       "cityDe": "Noboribetsu",
-      "titleDe": "Tag"
+      "titleDe": "Noboribetsu"
     },
     {
       "date": "8/19",
       "weekday": "三",
-      "title": "札幌退房、新千歲機場返台",
+      "title": "札幌",
       "blocks": [
         {
           "title": "建議路線",
@@ -222,9 +222,9 @@ export const itineraryData = {
           "titleDe": "EmpfehlungRoute"
         }
       ],
-      "city": "札幌、新千歲機場",
-      "cityDe": "Sapporo, New Chitose",
-      "titleDe": "/ JahreFlughafen"
+      "city": "札幌",
+      "cityDe": "Sapporo",
+      "titleDe": "Sapporo"
     }
   ]
 };

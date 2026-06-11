@@ -280,6 +280,14 @@ button {
   gap: 0;
 }
 
+.route-summary {
+  margin-bottom: 28px;
+}
+
+.route-summary .step-body {
+  max-width: none;
+}
+
 .route-step {
   position: relative;
   display: grid;
@@ -586,6 +594,10 @@ th {
   .route-step {
     grid-template-columns: 44px minmax(0, 1fr);
     gap: 12px;
+  }
+
+  .route-summary {
+    margin-bottom: 22px;
   }
 
   .route-step::before {
