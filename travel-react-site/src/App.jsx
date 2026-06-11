@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Bus, CalendarDays, ChevronDown, Hotel, Info, Languages, Map, MapPinned, Plane, Ship, Utensils } from "lucide-react";
+import { Bus, CalendarDays, ChevronDown, Hotel, Info, Languages, Map, MapPinned, Ship, Utensils } from "lucide-react";
 import { itineraryData } from "./itineraryData";
 
 const typeIcon = { transport: Bus, hotel: Hotel, sights: MapPinned, food: Utensils, ferry: Ship, tip: Info };
@@ -154,7 +154,7 @@ export default function App() {
     <div className="app-shell">
       <header className="hero">
         <nav className="topbar">
-          <div className="brand-mark"><Plane size={18} />{lang === "de" ? "Reiseplan" : "旅行行程"}</div>
+          <div />
           <div className="language-switch" aria-label="Language switch">
             <Languages size={17} />
             <button className={lang === "zh" ? "active" : ""} type="button" onClick={() => changeLang("zh")}>中文</button>
@@ -162,8 +162,7 @@ export default function App() {
           </div>
         </nav>
         <div className="hero-copy">
-          <p>{lang === "de" ? "Familienreise" : "Family Travel"}</p>
-          <h1>{lang === "de" ? itineraryData.titleDe : itineraryData.title}</h1>
+          <h1>{lang === "de" ? "Hokkaido Japan: 8 Tage" : "日本北海道8日遊"}</h1>
           <div className="city-tags">{itineraryData.cities.map((city) => <span key={city.name}>{lang === "de" ? city.labelDe : city.label}</span>)}</div>
         </div>
       </header>
