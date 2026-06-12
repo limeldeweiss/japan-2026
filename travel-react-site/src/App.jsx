@@ -164,7 +164,16 @@ function Block({ block, lang, defaultOpen }) {
   );
 }
 
-function splitHtmlSteps(html) {
+function normalizeStepTitle(title, lang) {
+  return title
+    .replace(/&gt;/g, ">")
+    .replace(/Hotel ONE'S RESIDEN[CS]E/g, lang === "de" ? "Hotel" : "旅館")
+    .replace(/\s*->\s*/g, " / ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function splitHtmlSteps(html, lang) {
   const pattern = /<p>####\s*(?:\d+\.\s*)?(.+?)<\/p>/g;
   const matches = [...html.matchAll(pattern)];
 
@@ -174,7 +183,7 @@ function splitHtmlSteps(html) {
     const start = match.index + match[0].length;
     const end = matches[index + 1]?.index ?? html.length;
     return {
-      title: match[1].replace(/&gt;/g, ">").trim(),
+      title: normalizeStepTitle(match[1], lang),
       html: html.slice(start, end).trim()
     };
   });
@@ -197,7 +206,7 @@ function RouteStep({ step, index }) {
 
 function RouteBlock({ block, lang }) {
   const html = lang === "de" ? block.htmlDe : block.html;
-  const steps = splitHtmlSteps(html);
+  const steps = splitHtmlSteps(html, lang);
   const introHtml = steps.length > 0 ? html.slice(0, html.indexOf("<p>####")).trim() : html;
   const heading = lang === "de" ? "Route" : "路線";
 
