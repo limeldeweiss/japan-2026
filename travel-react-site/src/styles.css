@@ -413,6 +413,17 @@ button {
   overflow-wrap: anywhere;
 }
 
+.step-heading-numbered {
+  grid-template-columns: minmax(0, 1fr) 24px;
+}
+
+.step-heading-numbered > span:first-child {
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  line-height: 1.1;
+  font-weight: 950;
+  overflow-wrap: anywhere;
+}
+
 .step-icon {
   width: 64px;
   height: 64px;
@@ -817,7 +828,15 @@ th {
     gap: 10px;
   }
 
+  .step-heading-numbered {
+    grid-template-columns: minmax(0, 1fr) 18px;
+  }
+
   .step-heading > span:nth-child(2) {
+    font-size: 1.35rem;
+  }
+
+  .step-heading-numbered > span:first-child {
     font-size: 1.35rem;
   }
 

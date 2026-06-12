@@ -181,13 +181,11 @@ function splitHtmlSteps(html) {
 }
 
 function RouteStep({ step, index }) {
-  const Icon = index === 0 ? Bus : index === 1 ? MapPinned : index === 2 ? Utensils : Info;
   return (
     <section className="route-step">
       <div className="step-index">{index + 1}</div>
       <div className="step-body">
-        <button className="step-heading" type="button" aria-expanded="true">
-          <span className="step-icon"><Icon size={22} /></span>
+        <button className="step-heading step-heading-numbered" type="button" aria-expanded="true">
           <span>{step.title}</span>
           <ChevronDown size={18} />
         </button>
