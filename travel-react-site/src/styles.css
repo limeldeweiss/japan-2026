@@ -257,6 +257,10 @@ button {
   gap: 18px;
 }
 
+.overview-grid > * {
+  min-width: 0;
+}
+
 .overview-panel,
 .day-detail {
   background: #fff;
@@ -455,6 +459,8 @@ button {
   color: #3d4e5b;
   line-height: 1.72;
   font-size: 1.45rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .rich-text ul,
@@ -468,6 +474,8 @@ button {
   color: #3d4e5b;
   line-height: 1.72;
   font-size: 1.45rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .rich-text a {
@@ -641,9 +649,12 @@ th {
 .overview-table td {
   position: relative;
   min-height: 44px;
-  padding: 10px 12px 10px 112px;
+  padding: 14px 16px;
   border-bottom: 1px solid rgba(18, 60, 87, .1);
   font-size: 1.05rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .overview-table td:last-child {
@@ -652,10 +663,10 @@ th {
 
 .overview-table td::before {
   content: attr(data-label);
-  position: absolute;
-  left: 12px;
-  top: 10px;
-  width: 86px;
+  position: static;
+  display: block;
+  width: auto;
+  margin-bottom: 8px;
   color: #103f5b;
   font-weight: 900;
 }
@@ -923,6 +934,13 @@ th {
 
   table {
     min-width: 0;
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .language-switch {
