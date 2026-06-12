@@ -452,7 +452,7 @@ button {
   margin: 0 0 14px;
   color: #3d4e5b;
   line-height: 1.72;
-  font-size: 1.18rem;
+  font-size: 1.45rem;
 }
 
 .rich-text ul,
@@ -465,7 +465,7 @@ button {
   margin: 7px 0;
   color: #3d4e5b;
   line-height: 1.72;
-  font-size: 1.18rem;
+  font-size: 1.45rem;
 }
 
 .rich-text a {
@@ -544,7 +544,7 @@ td {
   vertical-align: top;
   padding: 10px 12px;
   border-bottom: 1px solid rgba(18, 60, 87, .1);
-  font-size: .95rem;
+  font-size: 1.45rem;
   line-height: 1.55;
 }
 
@@ -784,7 +784,7 @@ th {
     min-height: 44px;
     padding: 10px 12px 10px 112px;
     border-bottom: 1px solid rgba(18, 60, 87, .1);
-    font-size: .95rem;
+    font-size: 1.05rem;
   }
 
   .overview-table td:last-child {
@@ -872,7 +872,7 @@ th {
 
   .rich-text p,
   .rich-text li {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .country-row {
