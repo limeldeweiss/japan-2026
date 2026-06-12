@@ -265,12 +265,12 @@ function Overview({ lang }) {
       </section>
 
       <section className="overview-panel wide-panel intro-panel">
-        <div className="panel-label"><Info size={20} />{lang === "de" ? "Reiseüberblick" : "行程總覽"}</div>
+        <div className="panel-label"><Info size={28} />{lang === "de" ? "Reiseüberblick" : "行程總覽"}</div>
         {itineraryData.intro.map((item, index) => <Html key={index} html={text(item, lang)} />)}
       </section>
       {country && (
         <section className="overview-panel country-panel">
-          <div className="panel-label"><Map size={16} />{text(country.name, lang)}</div>
+          <div className="panel-label"><Map size={28} />{text(country.name, lang)}</div>
           <div className="country-table">
             {country.rows.map((row) => (
               <div className="country-row" key={row[0]}>
@@ -284,7 +284,7 @@ function Overview({ lang }) {
       )}
       {infoSections.map((section) => (
         <section className="overview-panel wide-panel" key={section.title}>
-          <div className="panel-label"><CalendarDays size={16} />{section.title}</div>
+          <div className="panel-label"><CalendarDays size={28} />{section.title}</div>
           <Html html={section.html} />
         </section>
       ))}
