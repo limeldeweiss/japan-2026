@@ -355,7 +355,7 @@ export default function App() {
       <div className="layout">
         <aside className="timeline" aria-label="Itinerary timeline">
           <button className={active === "overview" ? "timeline-item active" : "timeline-item"} type="button" onClick={(event) => selectTimelineItem("overview", event)}>
-            <span className="timeline-dot"><Info size={15} /></span>
+            <span className="timeline-dot timeline-map-dot"><Map size={25} strokeWidth={2.5} /></span>
             <span><strong>{lang === "de" ? "Übersicht" : "總覽"}</strong><small>{lang === "de" ? "Reiseinfos" : "行程資訊"}</small></span>
           </button>
           {itineraryData.days.map((day, index) => (
