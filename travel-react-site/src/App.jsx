@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Bus, CalendarDays, ChevronDown, Hotel, Info, Map, MapPinned, Route, Ship, Utensils } from "lucide-react";
 import { itineraryData } from "./itineraryData";
 
@@ -208,16 +208,18 @@ function splitHtmlSteps(html, lang) {
   });
 }
 
-function RouteStep({ step, index }) {
+function RouteStep({ step, index, open, onToggle }) {
   return (
     <section className="route-step">
-      <div className="step-index">{index + 1}</div>
+      <button className="step-index" type="button" onClick={onToggle} aria-expanded={open} aria-label={`Toggle step ${index + 1}`}>
+        {index + 1}
+      </button>
       <div className="step-body">
-        <button className="step-heading step-heading-numbered" type="button" aria-expanded="true">
+        <button className="step-heading step-heading-numbered" type="button" onClick={onToggle} aria-expanded={open}>
           <span>{step.title}</span>
-          <ChevronDown size={18} />
+          <ChevronDown className={open ? "chevron open" : "chevron"} size={18} />
         </button>
-        {step.html && <Html html={step.html} />}
+        {open && step.html && <Html html={step.html} />}
       </div>
     </section>
   );
@@ -228,20 +230,42 @@ function RouteBlock({ block, lang }) {
   const steps = splitHtmlSteps(html, lang);
   const introHtml = steps.length > 0 ? html.slice(0, html.indexOf("<p>####")).trim() : html;
   const heading = lang === "de" ? "Route" : "路線";
+  const [openSteps, setOpenSteps] = useState(() => steps.map(() => true));
+  const allStepsOpen = steps.length > 0 && openSteps.every(Boolean);
+
+  useEffect(() => {
+    setOpenSteps(steps.map(() => true));
+  }, [html]);
+
+  function toggleAllSteps() {
+    setOpenSteps(steps.map(() => !allStepsOpen));
+  }
+
+  function toggleStep(stepIndex) {
+    setOpenSteps((current) => current.map((isOpen, index) => index === stepIndex ? !isOpen : isOpen));
+  }
 
   return (
     <div className="route-block">
       <section className="route-summary">
         <div className="step-body">
-          <button className="step-heading" type="button" aria-expanded="true">
+          <button className="step-heading" type="button" onClick={toggleAllSteps} aria-expanded={allStepsOpen}>
             <span className="step-icon route-icon"><Route size={34} strokeWidth={2.6} /></span>
             <span>{heading}</span>
-            <ChevronDown size={18} />
+            <ChevronDown className={allStepsOpen ? "chevron open" : "chevron"} size={18} />
           </button>
           <Html html={introHtml} />
         </div>
       </section>
-      {steps.map((step, index) => <RouteStep key={`${step.title}-${index}`} step={step} index={index} />)}
+      {steps.map((step, index) => (
+        <RouteStep
+          key={`${step.title}-${index}`}
+          step={step}
+          index={index}
+          open={openSteps[index] ?? true}
+          onToggle={() => toggleStep(index)}
+        />
+      ))}
     </div>
   );
 }

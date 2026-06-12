@@ -391,6 +391,8 @@ button {
   box-shadow: 0 0 0 7px #f4efe7;
   font-size: 2rem;
   font-weight: 950;
+  border: 0;
+  cursor: pointer;
 }
 
 .step-body {
@@ -409,7 +411,7 @@ button {
   padding: 0;
   color: #16202b;
   text-align: left;
-  cursor: default;
+  cursor: pointer;
 }
 
 .step-heading > span:nth-child(2) {
