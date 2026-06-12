@@ -134,8 +134,27 @@ const germanDays = [
   }
 ];
 
+function enhanceTableHtml(html) {
+  if (!html.includes("<table") || typeof DOMParser === "undefined") return html;
+
+  const doc = new DOMParser().parseFromString(`<div>${html}</div>`, "text/html");
+  doc.querySelectorAll("table").forEach((table) => {
+    table.classList.add("mobile-card-table");
+    const labels = [...table.querySelectorAll("thead th")].map((th) => th.textContent.trim());
+    table.querySelectorAll("tbody tr").forEach((row) => {
+      [...row.children].forEach((cell, index) => {
+        if (labels[index] && !cell.hasAttribute("data-label")) {
+          cell.setAttribute("data-label", labels[index]);
+        }
+      });
+    });
+  });
+
+  return doc.body.firstElementChild.innerHTML;
+}
+
 function Html({ html }) {
-  return <div className="rich-text" dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div className="rich-text" dangerouslySetInnerHTML={{ __html: enhanceTableHtml(html) }} />;
 }
 
 function text(item, lang) {
