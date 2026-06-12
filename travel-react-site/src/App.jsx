@@ -1,8 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
-import { Bus, CalendarDays, ChevronDown, Hotel, Info, Map, MapPinned, Route, Ship, Utensils } from "lucide-react";
+import { Bed, Bus, ChevronDown, GraduationCap, Hotel, Info, Luggage, Map, MapPinned, Plane, Route, Ship, Utensils, VenetianMask, Zap } from "lucide-react";
 import { itineraryData } from "./itineraryData";
 
 const typeIcon = { transport: Bus, hotel: Hotel, sights: MapPinned, food: Utensils, ferry: Ship, tip: Info };
+
+const overviewSectionMeta = [
+  { pattern: /整體路線摘要|Routenuebersicht/i, title: { zh: "路線摘要", de: "Routenübersicht" }, Icon: Route },
+  { pattern: /交通基礎|Verkehr/i, title: { zh: "交通資訊", de: "Verkehrsinfo" }, Icon: Plane },
+  { pattern: /住宿位置判斷|Lage der Unterkunft|Unterkunft/i, title: { zh: "旅館資訊", de: "Hotelinfo" }, Icon: Bed },
+  { pattern: /期間可能遇到的節慶與活動|Feste|Veranstaltungen/i, title: { zh: "節慶活動", de: "Feste & Events" }, Icon: VenetianMask },
+  { pattern: /之後細化時的待確認事項|Noch zu pruefen|Noch zu prüfen/i, title: { zh: "提醒事項", de: "Hinweise" }, Icon: Zap },
+  { pattern: /參考來源|Quellen/i, title: { zh: "參考來源", de: "Quellen" }, Icon: GraduationCap }
+];
+
+function overviewMetaFor(section, lang) {
+  const title = lang === "de" ? section.title : section.title;
+  const meta = overviewSectionMeta.find((item) => item.pattern.test(title));
+  return meta || { title: { zh: section.title, de: section.title }, Icon: Info };
+}
 
 const overviewRows = [
   {
@@ -276,7 +291,7 @@ function Overview({ lang }) {
   return (
     <main className="overview-grid">
       <section className="overview-panel wide-panel overview-table-panel">
-        <div className="panel-label"><CalendarDays size={28} />{lang === "de" ? "Unterkunft und Verkehr" : "住宿與交通"}</div>
+        <div className="panel-label"><Bus size={34} />{lang === "de" ? "Unterkunft und Verkehr" : "住宿與交通"}</div>
         <div className="table-wrap overview-table-wrap">
           <table className="overview-table">
             <colgroup>
@@ -308,12 +323,12 @@ function Overview({ lang }) {
       </section>
 
       <section className="overview-panel wide-panel intro-panel">
-        <div className="panel-label"><Info size={28} />{lang === "de" ? "Reiseüberblick" : "行程總覽"}</div>
+        <div className="panel-label"><Luggage size={34} />{lang === "de" ? "Reiseinfos" : "旅遊資訊"}</div>
         {itineraryData.intro.map((item, index) => <Html key={index} html={text(item, lang)} />)}
       </section>
       {country && (
         <section className="overview-panel country-panel">
-          <div className="panel-label"><Map size={28} />{text(country.name, lang)}</div>
+          <div className="panel-label"><Map size={34} />{text(country.name, lang)}</div>
           <div className="country-table">
             {country.rows.map((row) => (
               <div className="country-row" key={row[0]}>
@@ -325,12 +340,16 @@ function Overview({ lang }) {
           <ul className="note-list">{country.notes.map((note, index) => <li key={index}>{text(note, lang)}</li>)}</ul>
         </section>
       )}
-      {infoSections.map((section) => (
-        <section className="overview-panel wide-panel" key={section.title}>
-          <div className="panel-label"><CalendarDays size={28} />{section.title}</div>
-          <Html html={section.html} />
-        </section>
-      ))}
+      {infoSections.map((section) => {
+        const meta = overviewMetaFor(section, lang);
+        const Icon = meta.Icon;
+        return (
+          <section className="overview-panel wide-panel" key={section.title}>
+            <div className="panel-label"><Icon size={34} />{meta.title[lang] || section.title}</div>
+            <Html html={section.html} />
+          </section>
+        );
+      })}
     </main>
   );
 }
