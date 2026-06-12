@@ -240,10 +240,10 @@ function Overview({ lang }) {
             <tbody>
               {overviewRows.map((row) => (
                 <tr key={`${row.date}-${row.city}`}>
-                  <td>{(lang === "de" ? row.dateDe : row.date).split("\n").map((line) => <span key={line}>{line}</span>)}</td>
-                  <td>{lang === "de" ? row.cityDe : row.city}</td>
-                  <td>{lang === "de" ? row.planDe : row.plan}</td>
-                  <td>{lang === "de" ? row.addressDe || row.address : row.address}</td>
+                  <td data-label={lang === "de" ? "Datum" : "日期"}>{(lang === "de" ? row.dateDe : row.date).split("\n").map((line) => <span key={line}>{line}</span>)}</td>
+                  <td data-label={lang === "de" ? "Stadt" : "城市"}>{lang === "de" ? row.cityDe : row.city}</td>
+                  <td data-label={lang === "de" ? "Verkehr" : "交通"}>{lang === "de" ? row.planDe : row.plan}</td>
+                  <td data-label={lang === "de" ? "Ziel" : "到達點"}>{lang === "de" ? row.addressDe || row.address : row.address}</td>
                 </tr>
               ))}
             </tbody>
@@ -328,7 +328,14 @@ export default function App() {
         </nav>
         <div className="hero-copy">
           <h1>{lang === "de" ? "Hokkaido Japan: 8 Tage" : "日本北海道8日遊"}</h1>
-          <div className="city-tags">{itineraryData.cities.map((city) => <span key={city.name}>{lang === "de" ? city.labelDe : city.label}</span>)}</div>
+          <div className="city-tags">
+            {itineraryData.cities.map((city) => (
+              <span key={city.name}>
+                <strong>{city.label}</strong>
+                <small>{city.labelDe}</small>
+              </span>
+            ))}
+          </div>
         </div>
       </header>
 
