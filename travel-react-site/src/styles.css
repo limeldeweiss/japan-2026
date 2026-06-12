@@ -434,6 +434,11 @@ button {
   color: #103f5b;
 }
 
+.route-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
 .step-body > .rich-text {
   margin-top: 16px;
   margin-left: 6px;
@@ -843,6 +848,11 @@ th {
   .step-icon {
     width: 44px;
     height: 44px;
+  }
+
+  .route-icon svg {
+    width: 26px;
+    height: 26px;
   }
 
   .step-body > .rich-text {

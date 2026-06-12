@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Bus, CalendarDays, ChevronDown, Hotel, Info, Map, MapPinned, Ship, Utensils } from "lucide-react";
+import { Bus, CalendarDays, ChevronDown, Hotel, Info, Map, MapPinned, Route, Ship, Utensils } from "lucide-react";
 import { itineraryData } from "./itineraryData";
 
 const typeIcon = { transport: Bus, hotel: Hotel, sights: MapPinned, food: Utensils, ferry: Ship, tip: Info };
@@ -199,14 +199,14 @@ function RouteBlock({ block, lang }) {
   const html = lang === "de" ? block.htmlDe : block.html;
   const steps = splitHtmlSteps(html);
   const introHtml = steps.length > 0 ? html.slice(0, html.indexOf("<p>####")).trim() : html;
-  const heading = lang === "de" ? block.titleDe : block.title;
+  const heading = lang === "de" ? "Route" : "路線";
 
   return (
     <div className="route-block">
       <section className="route-summary">
         <div className="step-body">
           <button className="step-heading" type="button" aria-expanded="true">
-            <span className="step-icon"><Bus size={22} /></span>
+            <span className="step-icon route-icon"><Route size={34} strokeWidth={2.6} /></span>
             <span>{heading}</span>
             <ChevronDown size={18} />
           </button>
@@ -280,7 +280,7 @@ function Overview({ lang }) {
 function DayDetail({ day, index, lang }) {
   const germanDay = germanDays[index];
   const displayBlocks = lang === "de" && germanDay
-    ? [{ title: "Routenvorschlag", titleDe: "Routenvorschlag", html: germanDay.html, htmlDe: germanDay.html, type: "transport" }]
+    ? [{ title: "Route", titleDe: "Route", html: germanDay.html, htmlDe: germanDay.html, type: "transport" }]
     : day.blocks;
   return (
     <article className="day-detail">
