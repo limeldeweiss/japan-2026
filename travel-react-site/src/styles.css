@@ -558,6 +558,22 @@ th {
   min-width: 0;
 }
 
+.overview-table .date-col {
+  width: 9%;
+}
+
+.overview-table .city-col {
+  width: 10%;
+}
+
+.overview-table .plan-col {
+  width: 46%;
+}
+
+.overview-table .address-col {
+  width: 35%;
+}
+
 .overview-table th,
 .overview-table td {
   padding: 20px 18px;
@@ -573,7 +589,6 @@ th {
 }
 
 .overview-table td:first-child {
-  width: 12%;
   white-space: pre-line;
 }
 
@@ -582,12 +597,7 @@ th {
 }
 
 .overview-table td:nth-child(2) {
-  width: 14%;
   font-weight: 750;
-}
-
-.overview-table td:nth-child(4) {
-  width: 25%;
 }
 
 .overview-table th,

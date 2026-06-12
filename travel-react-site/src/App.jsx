@@ -227,6 +227,12 @@ function Overview({ lang }) {
         <div className="panel-label"><CalendarDays size={28} />{lang === "de" ? "Unterkunft und Verkehr" : "住宿與交通"}</div>
         <div className="table-wrap overview-table-wrap">
           <table className="overview-table">
+            <colgroup>
+              <col className="date-col" />
+              <col className="city-col" />
+              <col className="plan-col" />
+              <col className="address-col" />
+            </colgroup>
             <thead>
               <tr>
                 <th>{lang === "de" ? "Datum" : "日期"}</th>
